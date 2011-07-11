@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PermsManager.Models.PrWorld>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            worldname
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.worldname)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.worldid })
+        </td>
+    </tr>
+}
+
+</table>

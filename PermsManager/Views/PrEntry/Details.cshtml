@@ -1,0 +1,83 @@
+﻿@model PermsManager.Models.PrEntry
+@using PermsManager.Models
+@{
+    ViewBag.Title = "Details";
+    
+}
+<h2>
+    Details</h2>
+<fieldset>
+    <legend>@Model.name</legend>
+    <div class="display-label">
+        World: @Html.DisplayFor(model => model.PrWorld.worldname)</div>
+    <div>
+        <table width="10%">
+            <thead>
+                <tr>
+                    <th style="text-align:left">
+                        <h2>
+                            Groups</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PrInheritance group in ViewBag.groups)
+                {
+                    <tr>
+                        <td>
+                            <a href="../../PrEntry/Details/@group.PrEntry.entryid">@group.PrEntry1.name</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table width="10%">
+            <thead>
+                <tr>
+                    <th style="text-align:left">
+                        <h2>
+                            Users</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PrInheritance user in ViewBag.users)
+                {
+                    <tr>
+                        <td>
+                            <a href="../../PrEntry/Details/@user.PrEntry.entryid">@user.PrEntry1.name</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        <div>
+        <table width="10%">
+            <thead>
+                <tr>
+                    <th style="text-align:left">
+                        <h2>
+                            Permissions</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PrPermission perm in ViewBag.permissions)
+                {
+                    <tr>
+                        <td>
+                            @perm.permstring
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.entryid }) | <a href="javascript: history.go(-1)">
+        Back</a>
+</p>

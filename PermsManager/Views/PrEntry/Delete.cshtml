@@ -1,0 +1,33 @@
+﻿@model PermsManager.Models.PrEntry
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>PrEntry</legend>
+
+    <div class="display-label">name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">PrWorld</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrWorld.worldname)
+    </div>
+
+    <div class="display-label">type</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

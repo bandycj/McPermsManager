@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="McPermissionsModelStoreContainer" CdmEntityContainer="McPermissonsEntities">
+    <EntitySetMapping Name="PrEntries">
+      <EntityTypeMapping TypeName="IsTypeOf(McPermissionsModel.PrEntry)">
+        <MappingFragment StoreEntitySet="PrEntries">
+          <ScalarProperty Name="entryid" ColumnName="entryid" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="worldid" ColumnName="worldid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrPermissions">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrPermission">
+        <MappingFragment StoreEntitySet="PrPermissions">
+          <ScalarProperty Name="permid" ColumnName="permid" />
+          <ScalarProperty Name="permstring" ColumnName="permstring" />
+          <ScalarProperty Name="entryid" ColumnName="entryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrWorlds">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrWorld">
+        <MappingFragment StoreEntitySet="PrWorlds">
+          <ScalarProperty Name="worldid" ColumnName="worldid" />
+          <ScalarProperty Name="worldname" ColumnName="worldname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrTrackGroups">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrTrackGroup">
+        <MappingFragment StoreEntitySet="PrTrackGroups">
+          <ScalarProperty Name="groupOrder" ColumnName="groupOrder" />
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="trackid" ColumnName="trackid" />
+          <ScalarProperty Name="trackgroupid" ColumnName="trackgroupid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrDatas">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrData">
+        <MappingFragment StoreEntitySet="PrData">
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="entryid" ColumnName="entryid" />
+          <ScalarProperty Name="dataid" ColumnName="dataid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrInheritances">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrInheritance">
+        <MappingFragment StoreEntitySet="PrInheritance">
+          <ScalarProperty Name="parentorder" ColumnName="parentorder" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="childid" ColumnName="childid" />
+          <ScalarProperty Name="uinheritid" ColumnName="uinheritid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrTracks">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrTrack">
+        <MappingFragment StoreEntitySet="PrTracks">
+          <ScalarProperty Name="worldid" ColumnName="worldid" />
+          <ScalarProperty Name="trackname" ColumnName="trackname" />
+          <ScalarProperty Name="trackid" ColumnName="trackid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrWorldBases">
+      <EntityTypeMapping TypeName="McPermissionsModel.PrWorldBase">
+        <MappingFragment StoreEntitySet="PrWorldBase">
+          <ScalarProperty Name="defaultid" ColumnName="defaultid" />
+          <ScalarProperty Name="worldid" ColumnName="worldid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="get_groupPlayers" FunctionName="McPermissionsModel.Store.get_groupPlayers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="McPermissionsModel.get_groupPlayers_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

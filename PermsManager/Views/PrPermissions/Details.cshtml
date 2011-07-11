@@ -1,0 +1,25 @@
+﻿@model PermsManager.Models.PrPermission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PrPermission</legend>
+
+    <div class="display-label">permstring</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.permstring)
+    </div>
+
+    <div class="display-label">PrEntry</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrEntry.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.permid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

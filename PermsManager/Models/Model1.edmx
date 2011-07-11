@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="McPermissionsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="McPermissionsModelStoreContainer">
+          <EntitySet Name="PrData" EntityType="McPermissionsModel.Store.PrData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrEntries" EntityType="McPermissionsModel.Store.PrEntries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrInheritance" EntityType="McPermissionsModel.Store.PrInheritance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrPermissions" EntityType="McPermissionsModel.Store.PrPermissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrTrackGroups" EntityType="McPermissionsModel.Store.PrTrackGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrTracks" EntityType="McPermissionsModel.Store.PrTracks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrWorldBase" EntityType="McPermissionsModel.Store.PrWorldBase" store:Type="Tables" store:Schema="dbo" store:Name="PrWorldBase">
+            <DefiningQuery>SELECT 
+      [PrWorldBase].[worldid] AS [worldid], 
+      [PrWorldBase].[defaultid] AS [defaultid]
+      FROM [dbo].[PrWorldBase] AS [PrWorldBase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PrWorlds" EntityType="McPermissionsModel.Store.PrWorlds" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__PrData__entryid__797309D9" Association="McPermissionsModel.Store.FK__PrData__entryid__797309D9">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrData" EntitySet="PrData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrEntries__world__68487DD7" Association="McPermissionsModel.Store.FK__PrEntries__world__68487DD7">
+            <End Role="PrWorlds" EntitySet="PrWorlds" />
+            <End Role="PrEntries" EntitySet="PrEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrInherit__child__123EB7A3" Association="McPermissionsModel.Store.FK__PrInherit__child__123EB7A3">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrInheritance" EntitySet="PrInheritance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrInherit__paren__1332DBDC" Association="McPermissionsModel.Store.FK__PrInherit__paren__1332DBDC">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrInheritance" EntitySet="PrInheritance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrPermiss__entry__6E01572D" Association="McPermissionsModel.Store.FK__PrPermiss__entry__6E01572D">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrPermissions" EntitySet="PrPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrTrackGr__track__07C12930" Association="McPermissionsModel.Store.FK__PrTrackGr__track__07C12930">
+            <End Role="PrTracks" EntitySet="PrTracks" />
+            <End Role="PrTrackGroups" EntitySet="PrTrackGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrTrackGrou__gid__08B54D69" Association="McPermissionsModel.Store.FK__PrTrackGrou__gid__08B54D69">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrTrackGroups" EntitySet="PrTrackGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrTracks__worldi__02084FDA" Association="McPermissionsModel.Store.FK__PrTracks__worldi__02084FDA">
+            <End Role="PrWorlds" EntitySet="PrWorlds" />
+            <End Role="PrTracks" EntitySet="PrTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrWorldBa__defau__73BA3083" Association="McPermissionsModel.Store.FK__PrWorldBa__defau__73BA3083">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrWorldBase" EntitySet="PrWorldBase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrWorldBa__world__72C60C4A" Association="McPermissionsModel.Store.FK__PrWorldBa__world__72C60C4A">
+            <End Role="PrWorlds" EntitySet="PrWorlds" />
+            <End Role="PrWorldBase" EntitySet="PrWorldBase" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PrData">
+          <Key>
+            <PropertyRef Name="dataid" />
+          </Key>
+          <Property Name="dataid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="entryid" Type="int" Nullable="false" />
+          <Property Name="path" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="data" Type="varchar" Nullable="false" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="PrEntries">
+          <Key>
+            <PropertyRef Name="entryid" />
+          </Key>
+          <Property Name="entryid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="worldid" Type="int" Nullable="false" />
+          <Property Name="type" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrInheritance">
+          <Key>
+            <PropertyRef Name="uinheritid" />
+          </Key>
+          <Property Name="uinheritid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="childid" Type="int" Nullable="false" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+          <Property Name="parentorder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrPermissions">
+          <Key>
+            <PropertyRef Name="permid" />
+          </Key>
+          <Property Name="permid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="permstring" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="entryid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrTrackGroups">
+          <Key>
+            <PropertyRef Name="trackgroupid" />
+          </Key>
+          <Property Name="trackgroupid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="trackid" Type="int" Nullable="false" />
+          <Property Name="gid" Type="int" Nullable="false" />
+          <Property Name="groupOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrTracks">
+          <Key>
+            <PropertyRef Name="trackid" />
+          </Key>
+          <Property Name="trackid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="trackname" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="worldid" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'McPermissions.dbo.PrWorldBase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PrWorldBase">
+          <Key>
+            <PropertyRef Name="worldid" />
+          </Key>
+          <Property Name="worldid" Type="int" Nullable="false" />
+          <Property Name="defaultid" Type="int" />
+        </EntityType>
+        <EntityType Name="PrWorlds">
+          <Key>
+            <PropertyRef Name="worldid" />
+          </Key>
+          <Property Name="worldid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="worldname" Type="varchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <Association Name="FK__PrData__entryid__797309D9">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="1" />
+          <End Role="PrData" Type="McPermissionsModel.Store.PrData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrData">
+              <PropertyRef Name="entryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrEntries__world__68487DD7">
+          <End Role="PrWorlds" Type="McPermissionsModel.Store.PrWorlds" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorlds">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrEntries">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrInherit__child__123EB7A3">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="1" />
+          <End Role="PrInheritance" Type="McPermissionsModel.Store.PrInheritance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrInheritance">
+              <PropertyRef Name="childid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrInherit__paren__1332DBDC">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="1" />
+          <End Role="PrInheritance" Type="McPermissionsModel.Store.PrInheritance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrInheritance">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrPermiss__entry__6E01572D">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrPermissions" Type="McPermissionsModel.Store.PrPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrPermissions">
+              <PropertyRef Name="entryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrTrackGr__track__07C12930">
+          <End Role="PrTracks" Type="McPermissionsModel.Store.PrTracks" Multiplicity="1" />
+          <End Role="PrTrackGroups" Type="McPermissionsModel.Store.PrTrackGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrTracks">
+              <PropertyRef Name="trackid" />
+            </Principal>
+            <Dependent Role="PrTrackGroups">
+              <PropertyRef Name="trackid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrTrackGrou__gid__08B54D69">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="1" />
+          <End Role="PrTrackGroups" Type="McPermissionsModel.Store.PrTrackGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrTrackGroups">
+              <PropertyRef Name="gid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrTracks__worldi__02084FDA">
+          <End Role="PrWorlds" Type="McPermissionsModel.Store.PrWorlds" Multiplicity="1" />
+          <End Role="PrTracks" Type="McPermissionsModel.Store.PrTracks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorlds">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrTracks">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrWorldBa__defau__73BA3083">
+          <End Role="PrEntries" Type="McPermissionsModel.Store.PrEntries" Multiplicity="0..1" />
+          <End Role="PrWorldBase" Type="McPermissionsModel.Store.PrWorldBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrWorldBase">
+              <PropertyRef Name="defaultid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrWorldBa__world__72C60C4A">
+          <End Role="PrWorlds" Type="McPermissionsModel.Store.PrWorlds" Multiplicity="1" />
+          <End Role="PrWorldBase" Type="McPermissionsModel.Store.PrWorldBase" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorlds">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrWorldBase">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="get_groupPlayers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupId" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="McPermissionsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="McPermissonsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PrEntries" EntityType="McPermissionsModel.PrEntry" />
+          <EntitySet Name="PrPermissions" EntityType="McPermissionsModel.PrPermission" />
+          <EntitySet Name="PrWorlds" EntityType="McPermissionsModel.PrWorld" />
+          <AssociationSet Name="FK__PrEntries__world__68487DD7" Association="McPermissionsModel.FK__PrEntries__world__68487DD7">
+            <End Role="PrWorlds" EntitySet="PrWorlds" />
+            <End Role="PrEntries" EntitySet="PrEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrPermiss__entry__6E01572D" Association="McPermissionsModel.FK__PrPermiss__entry__6E01572D">
+            <End Role="PrEntries" EntitySet="PrEntries" />
+            <End Role="PrPermissions" EntitySet="PrPermissions" />
+          </AssociationSet>
+          <EntitySet Name="PrTrackGroups" EntityType="McPermissionsModel.PrTrackGroup" />
+          <AssociationSet Name="FK__PrTrackGrou__gid__08B54D69" Association="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69">
+            <End Role="PrEntry" EntitySet="PrEntries" />
+            <End Role="PrTrackGroup" EntitySet="PrTrackGroups" />
+          </AssociationSet>
+          <EntitySet Name="PrDatas" EntityType="McPermissionsModel.PrData" />
+          <EntitySet Name="PrInheritances" EntityType="McPermissionsModel.PrInheritance" />
+          <EntitySet Name="PrTracks" EntityType="McPermissionsModel.PrTrack" />
+          <EntitySet Name="PrWorldBases" EntityType="McPermissionsModel.PrWorldBase" />
+          <AssociationSet Name="FK__PrData__entryid__797309D9" Association="McPermissionsModel.FK__PrData__entryid__797309D9">
+            <End Role="PrEntry" EntitySet="PrEntries" />
+            <End Role="PrData" EntitySet="PrDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrInherit__child__123EB7A3" Association="McPermissionsModel.FK__PrInherit__child__123EB7A3">
+            <End Role="PrEntry" EntitySet="PrEntries" />
+            <End Role="PrInheritance" EntitySet="PrInheritances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrInherit__paren__1332DBDC" Association="McPermissionsModel.FK__PrInherit__paren__1332DBDC">
+            <End Role="PrEntry" EntitySet="PrEntries" />
+            <End Role="PrInheritance" EntitySet="PrInheritances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrWorldBa__defau__73BA3083" Association="McPermissionsModel.FK__PrWorldBa__defau__73BA3083">
+            <End Role="PrEntry" EntitySet="PrEntries" />
+            <End Role="PrWorldBase" EntitySet="PrWorldBases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrTrackGr__track__07C12930" Association="McPermissionsModel.FK__PrTrackGr__track__07C12930">
+            <End Role="PrTrack" EntitySet="PrTracks" />
+            <End Role="PrTrackGroup" EntitySet="PrTrackGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrTracks__worldi__02084FDA" Association="McPermissionsModel.FK__PrTracks__worldi__02084FDA">
+            <End Role="PrWorld" EntitySet="PrWorlds" />
+            <End Role="PrTrack" EntitySet="PrTracks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrWorldBa__world__72C60C4A" Association="McPermissionsModel.FK__PrWorldBa__world__72C60C4A">
+            <End Role="PrWorld" EntitySet="PrWorlds" />
+            <End Role="PrWorldBase" EntitySet="PrWorldBases" />
+          </AssociationSet>
+          <FunctionImport Name="get_groupPlayers" ReturnType="Collection(McPermissionsModel.get_groupPlayers_Result)">
+            <Parameter Name="groupId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="PrEntry">
+          <Key>
+            <PropertyRef Name="entryid" />
+          </Key>
+          <Property Name="entryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="worldid" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="PrWorld" Relationship="McPermissionsModel.FK__PrEntries__world__68487DD7" FromRole="PrEntries" ToRole="PrWorlds" />
+          <NavigationProperty Name="PrPermissions" Relationship="McPermissionsModel.FK__PrPermiss__entry__6E01572D" FromRole="PrEntries" ToRole="PrPermissions" />
+          <NavigationProperty Name="PrTrackGroups" Relationship="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" FromRole="PrEntry" ToRole="PrTrackGroup" />
+          <NavigationProperty Name="PrDatas" Relationship="McPermissionsModel.FK__PrData__entryid__797309D9" FromRole="PrEntry" ToRole="PrData" />
+          <NavigationProperty Name="PrInheritances" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrEntry" ToRole="PrInheritance" />
+          <NavigationProperty Name="PrInheritances1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrEntry" ToRole="PrInheritance" />
+          <NavigationProperty Name="PrWorldBases" Relationship="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" FromRole="PrEntry" ToRole="PrWorldBase" />
+        </EntityType>
+        <EntityType Name="PrPermission">
+          <Key>
+            <PropertyRef Name="permid" />
+          </Key>
+          <Property Name="permid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="permstring" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="entryid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrPermiss__entry__6E01572D" FromRole="PrPermissions" ToRole="PrEntries" />
+        </EntityType>
+        <EntityType Name="PrWorld">
+          <Key>
+            <PropertyRef Name="worldid" />
+          </Key>
+          <Property Name="worldid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worldname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PrEntries" Relationship="McPermissionsModel.FK__PrEntries__world__68487DD7" FromRole="PrWorlds" ToRole="PrEntries" />
+          <NavigationProperty Name="PrTracks" Relationship="McPermissionsModel.FK__PrTracks__worldi__02084FDA" FromRole="PrWorld" ToRole="PrTrack" />
+          <NavigationProperty Name="PrWorldBase" Relationship="McPermissionsModel.FK__PrWorldBa__world__72C60C4A" FromRole="PrWorld" ToRole="PrWorldBase" />
+        </EntityType>
+        <Association Name="FK__PrEntries__world__68487DD7">
+          <End Role="PrWorlds" Type="McPermissionsModel.PrWorld" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrEntries" Type="McPermissionsModel.PrEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorlds">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrEntries">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrPermiss__entry__6E01572D">
+          <End Role="PrEntries" Type="McPermissionsModel.PrEntry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrPermissions" Type="McPermissionsModel.PrPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntries">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrPermissions">
+              <PropertyRef Name="entryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrTrackGroup">
+          <Key>
+            <PropertyRef Name="trackgroupid" />
+          </Key>
+          <Property Type="Int32" Name="trackgroupid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="trackid" Nullable="false" />
+          <Property Type="Int32" Name="gid" Nullable="false" />
+          <Property Type="Int32" Name="groupOrder" Nullable="false" />
+          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" FromRole="PrTrackGroup" ToRole="PrEntry" />
+          <NavigationProperty Name="PrTrack" Relationship="McPermissionsModel.FK__PrTrackGr__track__07C12930" FromRole="PrTrackGroup" ToRole="PrTrack" />
+        </EntityType>
+        <Association Name="FK__PrTrackGrou__gid__08B54D69">
+          <End Type="McPermissionsModel.PrEntry" Role="PrEntry" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrTrackGroup" Role="PrTrackGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntry">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrTrackGroup">
+              <PropertyRef Name="gid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrData">
+          <Key>
+            <PropertyRef Name="dataid" />
+          </Key>
+          <Property Type="Int32" Name="dataid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="entryid" Nullable="false" />
+          <Property Type="String" Name="path" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="data" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrData__entryid__797309D9" FromRole="PrData" ToRole="PrEntry" />
+        </EntityType>
+        <EntityType Name="PrInheritance">
+          <Key>
+            <PropertyRef Name="uinheritid" />
+          </Key>
+          <Property Type="Int32" Name="uinheritid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="childid" Nullable="false" />
+          <Property Type="Int32" Name="parentid" Nullable="false" />
+          <Property Type="Int32" Name="parentorder" Nullable="false" />
+          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrInheritance" ToRole="PrEntry" />
+          <NavigationProperty Name="PrEntry1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrInheritance" ToRole="PrEntry" />
+        </EntityType>
+        <EntityType Name="PrTrack">
+          <Key>
+            <PropertyRef Name="trackid" />
+          </Key>
+          <Property Type="Int32" Name="trackid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="trackname" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="worldid" Nullable="false" />
+          <NavigationProperty Name="PrTrackGroups" Relationship="McPermissionsModel.FK__PrTrackGr__track__07C12930" FromRole="PrTrack" ToRole="PrTrackGroup" />
+          <NavigationProperty Name="PrWorld" Relationship="McPermissionsModel.FK__PrTracks__worldi__02084FDA" FromRole="PrTrack" ToRole="PrWorld" />
+        </EntityType>
+        <EntityType Name="PrWorldBase">
+          <Key>
+            <PropertyRef Name="worldid" />
+          </Key>
+          <Property Type="Int32" Name="worldid" Nullable="false" />
+          <Property Type="Int32" Name="defaultid" />
+          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" FromRole="PrWorldBase" ToRole="PrEntry" />
+          <NavigationProperty Name="PrWorld" Relationship="McPermissionsModel.FK__PrWorldBa__world__72C60C4A" FromRole="PrWorldBase" ToRole="PrWorld" />
+        </EntityType>
+        <Association Name="FK__PrData__entryid__797309D9">
+          <End Type="McPermissionsModel.PrEntry" Role="PrEntry" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrData" Role="PrData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntry">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrData">
+              <PropertyRef Name="entryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrInherit__child__123EB7A3">
+          <End Type="McPermissionsModel.PrEntry" Role="PrEntry" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrInheritance" Role="PrInheritance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntry">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrInheritance">
+              <PropertyRef Name="childid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrInherit__paren__1332DBDC">
+          <End Type="McPermissionsModel.PrEntry" Role="PrEntry" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrInheritance" Role="PrInheritance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntry">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrInheritance">
+              <PropertyRef Name="parentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrWorldBa__defau__73BA3083">
+          <End Type="McPermissionsModel.PrEntry" Role="PrEntry" Multiplicity="0..1" />
+          <End Type="McPermissionsModel.PrWorldBase" Role="PrWorldBase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrEntry">
+              <PropertyRef Name="entryid" />
+            </Principal>
+            <Dependent Role="PrWorldBase">
+              <PropertyRef Name="defaultid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrTrackGr__track__07C12930">
+          <End Type="McPermissionsModel.PrTrack" Role="PrTrack" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrTrackGroup" Role="PrTrackGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrTrack">
+              <PropertyRef Name="trackid" />
+            </Principal>
+            <Dependent Role="PrTrackGroup">
+              <PropertyRef Name="trackid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrTracks__worldi__02084FDA">
+          <End Type="McPermissionsModel.PrWorld" Role="PrWorld" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrTrack" Role="PrTrack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorld">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrTrack">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrWorldBa__world__72C60C4A">
+          <End Type="McPermissionsModel.PrWorld" Role="PrWorld" Multiplicity="1" />
+          <End Type="McPermissionsModel.PrWorldBase" Role="PrWorldBase" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PrWorld">
+              <PropertyRef Name="worldid" />
+            </Principal>
+            <Dependent Role="PrWorldBase">
+              <PropertyRef Name="worldid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="get_groupPlayers_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="32" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="McPermissionsModelStoreContainer" CdmEntityContainer="McPermissonsEntities">
+          <EntitySetMapping Name="PrEntries">
+            <EntityTypeMapping TypeName="IsTypeOf(McPermissionsModel.PrEntry)">
+              <MappingFragment StoreEntitySet="PrEntries">
+                <ScalarProperty Name="entryid" ColumnName="entryid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="worldid" ColumnName="worldid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            </EntitySetMapping>
+          <EntitySetMapping Name="PrPermissions"><EntityTypeMapping TypeName="McPermissionsModel.PrPermission"><MappingFragment StoreEntitySet="PrPermissions">
+            <ScalarProperty Name="permid" ColumnName="permid" />
+            <ScalarProperty Name="permstring" ColumnName="permstring" />
+            <ScalarProperty Name="entryid" ColumnName="entryid" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PrWorlds"><EntityTypeMapping TypeName="McPermissionsModel.PrWorld"><MappingFragment StoreEntitySet="PrWorlds">
+            <ScalarProperty Name="worldid" ColumnName="worldid" />
+            <ScalarProperty Name="worldname" ColumnName="worldname" />
+          </MappingFragment></EntityTypeMapping>
+            </EntitySetMapping>
+          <EntitySetMapping Name="PrTrackGroups">
+            <EntityTypeMapping TypeName="McPermissionsModel.PrTrackGroup">
+              <MappingFragment StoreEntitySet="PrTrackGroups">
+                <ScalarProperty Name="groupOrder" ColumnName="groupOrder" />
+                <ScalarProperty Name="gid" ColumnName="gid" />
+                <ScalarProperty Name="trackid" ColumnName="trackid" />
+                <ScalarProperty Name="trackgroupid" ColumnName="trackgroupid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrDatas">
+            <EntityTypeMapping TypeName="McPermissionsModel.PrData">
+              <MappingFragment StoreEntitySet="PrData">
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="entryid" ColumnName="entryid" />
+                <ScalarProperty Name="dataid" ColumnName="dataid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrInheritances">
+            <EntityTypeMapping TypeName="McPermissionsModel.PrInheritance">
+              <MappingFragment StoreEntitySet="PrInheritance">
+                <ScalarProperty Name="parentorder" ColumnName="parentorder" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="childid" ColumnName="childid" />
+                <ScalarProperty Name="uinheritid" ColumnName="uinheritid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrTracks">
+            <EntityTypeMapping TypeName="McPermissionsModel.PrTrack">
+              <MappingFragment StoreEntitySet="PrTracks">
+                <ScalarProperty Name="worldid" ColumnName="worldid" />
+                <ScalarProperty Name="trackname" ColumnName="trackname" />
+                <ScalarProperty Name="trackid" ColumnName="trackid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrWorldBases">
+            <EntityTypeMapping TypeName="McPermissionsModel.PrWorldBase">
+              <MappingFragment StoreEntitySet="PrWorldBase">
+                <ScalarProperty Name="defaultid" ColumnName="defaultid" />
+                <ScalarProperty Name="worldid" ColumnName="worldid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_groupPlayers" FunctionName="McPermissionsModel.Store.get_groupPlayers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="McPermissionsModel.get_groupPlayers_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="McPermissionsModel.PrEntry" Width="1.5" PointX="3" PointY="6.5" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrPermission" Width="1.5" PointX="5.25" PointY="6.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrWorld" Width="1.5" PointX="0.75" PointY="8.375" Height="1.9802864583333317" IsExpanded="true" />
+        <AssociationConnector Association="McPermissionsModel.FK__PrEntries__world__68487DD7" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.0045475260416659" />
+          <ConnectorPoint PointX="3" PointY="9.0045475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrPermiss__entry__6E01572D" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.7689925130208337" />
+          <ConnectorPoint PointX="5.25" PointY="7.7689925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="McPermissionsModel.PrTrackGroup" Width="1.5" PointX="9.125" PointY="9.875" Height="2.1725878906249996" />
+        <AssociationConnector Association="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" >
+          <ConnectorPoint PointX="4.5" PointY="9.1151432291666676" />
+          <ConnectorPoint PointX="10.03125" PointY="9.1151432291666676" />
+          <ConnectorPoint PointX="10.03125" PointY="9.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="McPermissionsModel.PrData" Width="1.5" PointX="7.875" PointY="6.75" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrInheritance" Width="1.5" PointX="4.875" PointY="10.875" Height="2.1725878906250014" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrTrack" Width="1.5" PointX="0.5" PointY="11.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrWorldBase" Width="1.5" PointX="2.5" PointY="11.5" Height="1.7879850260416674" />
+        <AssociationConnector Association="McPermissionsModel.FK__PrData__entryid__797309D9" >
+          <ConnectorPoint PointX="4.5" PointY="6.78125" />
+          <ConnectorPoint PointX="7.875" PointY="6.78125" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrInherit__child__123EB7A3" >
+          <ConnectorPoint PointX="4.28125" PointY="9.6340950520833317" />
+          <ConnectorPoint PointX="4.28125" PointY="11.15625" />
+          <ConnectorPoint PointX="4.875" PointY="11.15625" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrInherit__paren__1332DBDC" >
+          <ConnectorPoint PointX="4.4218775" PointY="9.6340950520833317" />
+          <ConnectorPoint PointX="4.4218775" PointY="10.9843725" />
+          <ConnectorPoint PointX="4.875" PointY="10.9843725" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" >
+          <ConnectorPoint PointX="3.5" PointY="9.6340950520833317" />
+          <ConnectorPoint PointX="3.5" PointY="11.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrTrackGr__track__07C12930" >
+          <ConnectorPoint PointX="2" PointY="13.5403857421875" />
+          <ConnectorPoint PointX="9.875" PointY="13.5403857421875" />
+          <ConnectorPoint PointX="9.875" PointY="12.047587890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrTracks__worldi__02084FDA" >
+          <ConnectorPoint PointX="1.375" PointY="10.355286458333332" />
+          <ConnectorPoint PointX="1.375" PointY="11.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="McPermissionsModel.FK__PrWorldBa__world__72C60C4A" >
+          <ConnectorPoint PointX="2.15625" PointY="10.355286458333332" />
+          <ConnectorPoint PointX="2.15625" PointY="11.59375" />
+          <ConnectorPoint PointX="2.5" PointY="11.59375" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

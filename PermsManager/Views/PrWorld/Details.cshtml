@@ -1,0 +1,39 @@
+﻿@model PermsManager.Models.PrWorld
+@using PermsManager.Models
+@using System.Data.Objects.DataClasses;
+@using System.Collections;
+@{
+    ViewBag.Title = "Details";
+    IEnumerable<PrEntry> groups = (IEnumerable<PrEntry>)ViewBag.groups;
+}
+<h2>
+    Details</h2>
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.worldname)</legend>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                </tr>
+                <th>
+                    <h2>
+                        Groups</h2>
+                </th>
+            </thead>
+            <tbody>
+                @foreach (PrEntry group in ViewBag.groups)
+                {
+                    <tr>
+                        <td>
+                            <a href="../../PrEntry/Details/@group.entryid">@group.name</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
