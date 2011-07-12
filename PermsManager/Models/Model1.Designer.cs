@@ -722,7 +722,7 @@ namespace PermsManager.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("McPermissionsModel", "FK__PrInherit__child__123EB7A3", "PrInheritance")]
-        public EntityCollection<PrInheritance> PrInheritances
+        public EntityCollection<PrInheritance> Parents
         {
             get
             {
@@ -744,7 +744,7 @@ namespace PermsManager.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("McPermissionsModel", "FK__PrInherit__paren__1332DBDC", "PrInheritance")]
-        public EntityCollection<PrInheritance> PrInheritances1
+        public EntityCollection<PrInheritance> Children
         {
             get
             {
@@ -924,7 +924,7 @@ namespace PermsManager.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("McPermissionsModel", "FK__PrInherit__child__123EB7A3", "PrEntry")]
-        public PrEntry PrEntry
+        public PrEntry Child
         {
             get
             {
@@ -940,7 +940,7 @@ namespace PermsManager.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PrEntry> PrEntryReference
+        public EntityReference<PrEntry> ChildReference
         {
             get
             {
@@ -962,7 +962,7 @@ namespace PermsManager.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("McPermissionsModel", "FK__PrInherit__paren__1332DBDC", "PrEntry")]
-        public PrEntry PrEntry1
+        public PrEntry Parent
         {
             get
             {
@@ -978,7 +978,7 @@ namespace PermsManager.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PrEntry> PrEntry1Reference
+        public EntityReference<PrEntry> ParentReference
         {
             get
             {

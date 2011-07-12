@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using PermsManager.Models;
 
 namespace PermsManager.Controllers
-{ 
+{
     public class PrPermissionsController : Controller
     {
         private McPermissonsEntities db = new McPermissonsEntities();
@@ -34,11 +34,19 @@ namespace PermsManager.Controllers
         //
         // GET: /PrPermissions/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = -1)
         {
-            ViewBag.entryid = new SelectList(db.PrEntries, "entryid", "name");
+            if (id == -1)
+            {
+                ViewBag.entryid = new SelectList(db.PrEntries, "entryid", "name");
+                ViewBag.prentry = null;
+            }
+            else
+            {
+                ViewBag.prentry = db.PrEntries.Single(p => p.entryid == id);
+            }
             return View();
-        } 
+        }
 
         //
         // POST: /PrPermissions/Create
@@ -46,20 +54,21 @@ namespace PermsManager.Controllers
         [HttpPost]
         public ActionResult Create(PrPermission prpermission)
         {
+            ViewBag.prentry = null;
             if (ModelState.IsValid)
             {
                 db.PrPermissions.AddObject(prpermission);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             ViewBag.entryid = new SelectList(db.PrEntries, "entryid", "name", prpermission.entryid);
             return View(prpermission);
         }
-        
+
         //
         // GET: /PrPermissions/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             PrPermission prpermission = db.PrPermissions.Single(p => p.permid == id);
@@ -86,7 +95,7 @@ namespace PermsManager.Controllers
 
         //
         // GET: /PrPermissions/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             PrPermission prpermission = db.PrPermissions.Single(p => p.permid == id);
@@ -98,7 +107,7 @@ namespace PermsManager.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             PrPermission prpermission = db.PrPermissions.Single(p => p.permid == id);
             db.PrPermissions.DeleteObject(prpermission);
             db.SaveChanges();

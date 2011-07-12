@@ -5,3 +5,10 @@ f:\my documents\visual studio 2010\Projects\PermsManager\PermsManager\bin\Entity
 f:\my documents\visual studio 2010\Projects\PermsManager\PermsManager\obj\Debug\ResolveAssemblyReference.cache
 f:\my documents\visual studio 2010\Projects\PermsManager\PermsManager\obj\Debug\PermsManager.dll
 f:\my documents\visual studio 2010\Projects\PermsManager\PermsManager\obj\Debug\PermsManager.pdb
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\bin\PermsManager.dll
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\bin\PermsManager.pdb
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\bin\EntityFramework.dll
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\bin\EntityFramework.xml
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\obj\Debug\PermsManager.dll
+C:\Documents and Settings\e83800\My Documents\Visual Studio 2010\McPermsManager\PermsManager\obj\Debug\PermsManager.pdb

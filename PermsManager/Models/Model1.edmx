@@ -325,8 +325,8 @@
           <NavigationProperty Name="PrPermissions" Relationship="McPermissionsModel.FK__PrPermiss__entry__6E01572D" FromRole="PrEntries" ToRole="PrPermissions" />
           <NavigationProperty Name="PrTrackGroups" Relationship="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" FromRole="PrEntry" ToRole="PrTrackGroup" />
           <NavigationProperty Name="PrDatas" Relationship="McPermissionsModel.FK__PrData__entryid__797309D9" FromRole="PrEntry" ToRole="PrData" />
-          <NavigationProperty Name="PrInheritances" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrEntry" ToRole="PrInheritance" />
-          <NavigationProperty Name="PrInheritances1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrEntry" ToRole="PrInheritance" />
+          <NavigationProperty Name="Parents" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrEntry" ToRole="PrInheritance" />
+          <NavigationProperty Name="Children" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrEntry" ToRole="PrInheritance" />
           <NavigationProperty Name="PrWorldBases" Relationship="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" FromRole="PrEntry" ToRole="PrWorldBase" />
         </EntityType>
         <EntityType Name="PrPermission">
@@ -417,8 +417,8 @@
           <Property Type="Int32" Name="childid" Nullable="false" />
           <Property Type="Int32" Name="parentid" Nullable="false" />
           <Property Type="Int32" Name="parentorder" Nullable="false" />
-          <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrInheritance" ToRole="PrEntry" />
-          <NavigationProperty Name="PrEntry1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrInheritance" ToRole="PrEntry" />
+          <NavigationProperty Name="Child" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrInheritance" ToRole="PrEntry" />
+          <NavigationProperty Name="Parent" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrInheritance" ToRole="PrEntry" />
         </EntityType>
         <EntityType Name="PrTrack">
           <Key>
@@ -638,11 +638,11 @@
           <ConnectorPoint PointX="4.5" PointY="7.7689925130208337" />
           <ConnectorPoint PointX="5.25" PointY="7.7689925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="McPermissionsModel.PrTrackGroup" Width="1.5" PointX="9.125" PointY="9.875" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="McPermissionsModel.PrTrackGroup" Width="1.5" PointX="8" PointY="9.625" Height="1.9210009765624996" />
         <AssociationConnector Association="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" >
-          <ConnectorPoint PointX="4.5" PointY="9.1151432291666676" />
-          <ConnectorPoint PointX="10.03125" PointY="9.1151432291666676" />
-          <ConnectorPoint PointX="10.03125" PointY="9.875" />
+          <ConnectorPoint PointX="4.5" PointY="8.9059456380208317" />
+          <ConnectorPoint PointX="9.46875" PointY="8.9059456380208317" />
+          <ConnectorPoint PointX="9.46875" PointY="9.625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="McPermissionsModel.PrData" Width="1.5" PointX="7.875" PointY="6.75" Height="1.9802864583333353" />
         <EntityTypeShape EntityType="McPermissionsModel.PrInheritance" Width="1.5" PointX="4.875" PointY="10.875" Height="2.1725878906250014" />
@@ -653,30 +653,30 @@
           <ConnectorPoint PointX="7.875" PointY="6.78125" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrInherit__child__123EB7A3" >
-          <ConnectorPoint PointX="4.28125" PointY="9.6340950520833317" />
-          <ConnectorPoint PointX="4.28125" PointY="11.15625" />
-          <ConnectorPoint PointX="4.875" PointY="11.15625" />
+          <ConnectorPoint PointX="4.21093625" PointY="9.2427376302083335" />
+          <ConnectorPoint PointX="4.21093625" PointY="11.298752779645987" />
+          <ConnectorPoint PointX="4.875" PointY="11.298752779645987" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrInherit__paren__1332DBDC" >
-          <ConnectorPoint PointX="4.4218775" PointY="9.6340950520833317" />
-          <ConnectorPoint PointX="4.4218775" PointY="10.9843725" />
-          <ConnectorPoint PointX="4.875" PointY="10.9843725" />
+          <ConnectorPoint PointX="4.386720625" PointY="9.2427376302083335" />
+          <ConnectorPoint PointX="4.386720625" PointY="11.055623889822993" />
+          <ConnectorPoint PointX="4.875" PointY="11.055623889822993" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" >
-          <ConnectorPoint PointX="3.5" PointY="9.6340950520833317" />
+          <ConnectorPoint PointX="3.5" PointY="9.2427376302083335" />
           <ConnectorPoint PointX="3.5" PointY="11.5" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrTrackGr__track__07C12930" >
-          <ConnectorPoint PointX="2" PointY="13.5403857421875" />
-          <ConnectorPoint PointX="9.875" PointY="13.5403857421875" />
-          <ConnectorPoint PointX="9.875" PointY="12.047587890625" />
+          <ConnectorPoint PointX="2" PointY="13.33072998046875" />
+          <ConnectorPoint PointX="8.75" PointY="13.33072998046875" />
+          <ConnectorPoint PointX="8.75" PointY="11.5460009765625" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrTracks__worldi__02084FDA" >
-          <ConnectorPoint PointX="1.375" PointY="10.355286458333332" />
+          <ConnectorPoint PointX="1.375" PointY="10.131653645833334" />
           <ConnectorPoint PointX="1.375" PointY="11.75" />
         </AssociationConnector>
         <AssociationConnector Association="McPermissionsModel.FK__PrWorldBa__world__72C60C4A" >
-          <ConnectorPoint PointX="2.15625" PointY="10.355286458333332" />
+          <ConnectorPoint PointX="2.15625" PointY="10.131653645833334" />
           <ConnectorPoint PointX="2.15625" PointY="11.59375" />
           <ConnectorPoint PointX="2.5" PointY="11.59375" />
         </AssociationConnector>

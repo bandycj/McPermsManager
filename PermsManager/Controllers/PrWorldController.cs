@@ -83,27 +83,6 @@ namespace PermsManager.Controllers
             return View(prworld);
         }
 
-        //
-        // GET: /PrWorld/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            PrWorld prworld = db.PrWorlds.Single(p => p.worldid == id);
-            return View(prworld);
-        }
-
-        //
-        // POST: /PrWorld/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            PrWorld prworld = db.PrWorlds.Single(p => p.worldid == id);
-            db.PrWorlds.DeleteObject(prworld);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

@@ -65,8 +65,8 @@
     <NavigationProperty Name="PrPermissions" Relationship="McPermissionsModel.FK__PrPermiss__entry__6E01572D" FromRole="PrEntries" ToRole="PrPermissions" />
     <NavigationProperty Name="PrTrackGroups" Relationship="McPermissionsModel.FK__PrTrackGrou__gid__08B54D69" FromRole="PrEntry" ToRole="PrTrackGroup" />
     <NavigationProperty Name="PrDatas" Relationship="McPermissionsModel.FK__PrData__entryid__797309D9" FromRole="PrEntry" ToRole="PrData" />
-    <NavigationProperty Name="PrInheritances" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrEntry" ToRole="PrInheritance" />
-    <NavigationProperty Name="PrInheritances1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrEntry" ToRole="PrInheritance" />
+    <NavigationProperty Name="Parents" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrEntry" ToRole="PrInheritance" />
+    <NavigationProperty Name="Children" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrEntry" ToRole="PrInheritance" />
     <NavigationProperty Name="PrWorldBases" Relationship="McPermissionsModel.FK__PrWorldBa__defau__73BA3083" FromRole="PrEntry" ToRole="PrWorldBase" />
   </EntityType>
   <EntityType Name="PrPermission">
@@ -157,8 +157,8 @@
     <Property Type="Int32" Name="childid" Nullable="false" />
     <Property Type="Int32" Name="parentid" Nullable="false" />
     <Property Type="Int32" Name="parentorder" Nullable="false" />
-    <NavigationProperty Name="PrEntry" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrInheritance" ToRole="PrEntry" />
-    <NavigationProperty Name="PrEntry1" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrInheritance" ToRole="PrEntry" />
+    <NavigationProperty Name="Child" Relationship="McPermissionsModel.FK__PrInherit__child__123EB7A3" FromRole="PrInheritance" ToRole="PrEntry" />
+    <NavigationProperty Name="Parent" Relationship="McPermissionsModel.FK__PrInherit__paren__1332DBDC" FromRole="PrInheritance" ToRole="PrEntry" />
   </EntityType>
   <EntityType Name="PrTrack">
     <Key>

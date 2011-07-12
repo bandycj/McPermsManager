@@ -30,14 +30,14 @@ namespace PermsManager.Controllers
             PrEntry prentry = db.PrEntries.Single(p => p.entryid == id);
             if (prentry.type.Equals(1))
             {
-                ViewBag.groups = prentry.PrInheritances1.Where(p => p.PrEntry.type.Equals(1));
-                ViewBag.users = prentry.PrInheritances1.Where(p => p.PrEntry.type.Equals(0));
+                ViewBag.groups = prentry.Children.Where(p => p.Child.type.Equals(1));
+                ViewBag.users = prentry.Children.Where(p => p.Child.type.Equals(0));
                 ViewBag.permissions = prentry.PrPermissions.Where(p => p.entryid.Equals(id));
             }
             else
             {
-                ViewBag.groups = prentry.PrInheritances.Where(p => p.PrEntry1.type.Equals(1));
-                ViewBag.users = prentry.PrInheritances.Where(p => p.PrEntry1.type.Equals(0));
+                ViewBag.groups = prentry.Parents.Where(p => p.Parent.type.Equals(1));
+                ViewBag.users = prentry.Parents.Where(p => p.Parent.type.Equals(0));
                 ViewBag.permissions = prentry.PrPermissions.Where(p => p.entryid.Equals(id));
             }
             return View(prentry);

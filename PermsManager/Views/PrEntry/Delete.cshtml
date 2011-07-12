@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>PrEntry</legend>
+    <legend>>@Model.name</legend>
 
     <div class="display-label">name</div>
     <div class="display-field">
@@ -31,3 +31,7 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+
+<div>
+    <a href="javascript: history.go(-1)">Back</a>
+</div>

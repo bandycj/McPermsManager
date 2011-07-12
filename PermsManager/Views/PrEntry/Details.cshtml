@@ -25,7 +25,14 @@
                 {
                     <tr>
                         <td>
-                            <a href="../../PrEntry/Details/@group.PrEntry.entryid">@group.PrEntry1.name</a>
+                            @if (Model.type.Equals(0))
+                            {
+                                <a href="../../PrEntry/Details/@group.Parent.entryid">@group.Parent.name</a>
+                            }
+                            else
+                            {
+                                <a href="../../PrEntry/Details/@group.Child.entryid">@group.Child.name</a>
+                            }
                         </td>
                     </tr>
                 }
@@ -47,7 +54,7 @@
                 {
                     <tr>
                         <td>
-                            <a href="../../PrEntry/Details/@user.PrEntry.entryid">@user.PrEntry1.name</a>
+                            <a href="../../PrEntry/Details/@user.Child.entryid">@user.Child.name</a>
                         </td>
                     </tr>
                 }
@@ -65,6 +72,11 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                <td>
+                @Html.ActionLink("Create New", "Create", "PrPermissions", new { id = Model.entryid }, null);
+                </td>
+                </tr>
                 @foreach (PrPermission perm in ViewBag.permissions)
                 {
                     <tr>
